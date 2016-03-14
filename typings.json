@@ -1,0 +1,7 @@
+{
+  "ambientDependencies": {
+    "hapi": "github:DefinitelyTyped/DefinitelyTyped/hapi/hapi.d.ts#918608a5e007d925f4f60a275881057f07c12619",
+    "lodash": "github:DefinitelyTyped/DefinitelyTyped/lodash/lodash.d.ts#c22a5e55b062c7b2af9df92ea0820c2afa153b2a",
+    "react": "github:DefinitelyTyped/DefinitelyTyped/react/react.d.ts#f407264835650f5f38d4bb2c515a79e7a835916b"
+  }
+}

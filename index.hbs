@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Savitri</title>
+        <link rel="stylesheet" href="/static/flexboxgrid.css" type="text/css">
+        <link rel="stylesheet" href="/static/app.css" type="text/css">
+        {{! fake a favicon - http://stackoverflow.com/a/13416784 }}
+        <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    </head>
+    <body style="background-color: #fff8e1;margin: 0px">
+        <div id="react-root">{{{ componentRenderedToString }}}</div>
+        <script type="application/javascript">
+            {{#if initialState}}
+                window.__INITIAL_STATE__ = {{{ initialState }}};
+            {{/if}}
+            {{#if env}}
+                window.env = "{{ env }}";
+            {{/if}}
+        </script>
+        <script src="/static/clipboard.min.js" type="application/javascript"></script>
+        <script src="/static/bundle.js" type="application/javascript"></script>
+    </body>
+</html>
