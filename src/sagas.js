@@ -4,7 +4,7 @@ import { call, fork, put, take } from 'redux-saga/effects';
 
 import { API_ENDPOINT, PROXY_ENDPOINT } from './config/endpoints';
 import * as appActions from './screens/App/actions';
-import * as counterActions from './screens/App/screens/Counter/actions';
+// import * as counterActions from './screens/App/screens/Counter/actions';
 import * as readActions from './screens/App/screens/Read/actions';
 import * as compareActions from './screens/App/screens/Compare/actions';
 import * as blogActions from './screens/App/screens/Blog/actions';
@@ -79,14 +79,14 @@ const watchReadMount = function* (...args) {
 };
 
 
-const watchCounterMount = function* () {
+// const watchCounterMount = function* () {
 
-    // console.log('pre yield');
-    while (yield take(counterActions.INIT_COUNTER)) {
-        // console.log('yield');
-        yield put(counterActions.setCounter(0));
-    }
-};
+//     // console.log('pre yield');
+//     while (yield take(counterActions.INIT_COUNTER)) {
+//         // console.log('yield');
+//         yield put(counterActions.setCounter(0));
+//     }
+// };
 
 const watchCompareMount = function* () {
 
@@ -133,7 +133,7 @@ const root = function* (getState) {
     yield fork(watchEditions);
     yield fork(watchEdition);
     yield fork(watchReadMount, getState);
-    yield fork(watchCounterMount);
+    // yield fork(watchCounterMount);
     yield fork(watchCompareMount);
     yield fork(watchBlogMount);
     yield fork(watchPostMount);
