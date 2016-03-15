@@ -1,7 +1,6 @@
 import React from 'react';
 import Slider from 'material-ui/lib/slider';
 
-
 import Edition from './Edition';
 
 
@@ -13,6 +12,13 @@ export default class EditionContainer extends React.Component {
             selectedIndex: 0
         };
         this.handleSliderChange = this.handleSliderChange.bind(this);
+
+        this.clipboard = new Clipboard('.copy-btn');
+    }
+
+    componentWillUnmount() {
+
+        this.clipboard.destroy();
     }
 
     handleSliderChange(event, value) {
@@ -26,17 +32,21 @@ export default class EditionContainer extends React.Component {
     render() {
 
         const { editions } = this.props;
-        // editions.map((edition) => )
+
         const step = parseFloat(1 / (editions.length - 1));
         return (
             <div>
                 <div className="row">
                     <div className="col-xs-offset-4 col-xs-4">
-                        <Slider description='Move the slider to select edition' onChange={ this.handleSliderChange } step={ step } />
+                        <Slider description="Move the slider to select edition" onChange={ this.handleSliderChange } step={ step } />
                     </div>
                 </div>
                 <div className="row">
-                    { this.state.selectedIndex !== -1 ? <Edition edition={ editions[this.state.selectedIndex] } /> : <div className="col-xs-offset-2 col-xs-8">Move the slider to select an edition</div> }
+                    {
+                        this.state.selectedIndex !== -1 ?
+                            <Edition edition={ editions[this.state.selectedIndex]} /> :
+                            <div className="col-xs-offset-2 col-xs-8">Move the slider to select an edition</div>
+                    }
                 </div>
             </div>
         );

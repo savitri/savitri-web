@@ -45,6 +45,8 @@ export default class EditionSelector extends Component {
                 labelStyle={ styles.label }
                 onChange={ this.props.onEditionChange }
                 value={ this.props.selected }
+                floatingLabelText="Selected edition"
+                floatingLabelStyle={ styles.label }
             >
                 {
                     editions.map((edition, index) => {

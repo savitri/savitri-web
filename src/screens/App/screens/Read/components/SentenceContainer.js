@@ -59,13 +59,14 @@ class SentenceContainer extends React.Component {
 
         const style = readSettings.breaks ? styles.self.withBreaks : !isLast ? styles.self.noBreaks : null;
 
-        return ( 
+        return (
             <div className="row" onMouseEnter={ this.handleMouseEnter } onMouseLeave={ this.handleMouseLeave } style={ style }>
                 <Sentence sectionId={ sectionId } sentence={ sentence } />
                 <Reference
                     contextShown={ this.state.hoveredIn }
                     referenceShown={ readSettings.references }
-                    refId={ sentence.refId ? sentence.refId : sentence.refIds }
+                    refId={ sentence.refId }
+                    refIds={ sentence.refIds }
                     sectionId={ sectionId }
                     sentenceId={ sentence.id }
                     />

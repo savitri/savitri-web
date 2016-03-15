@@ -10,9 +10,13 @@ const StaticFileServer = require('./plugins/file-server');
 const StaticTemplateServer = require('./plugins/template-server');
 const Vision = require('vision');
 
+let WebpackConfig;
 
-const WebpackConfig = require('../../webpack.config.dev.js');
-
+if (process.env.NODE_ENV === 'production') {
+    WebpackConfig = require('../../webpack.config.prod.js');
+} else {
+    WebpackConfig = require('../../webpack.config.dev.js');
+}
 
 const server = new Hapi.Server();
 server.connection({

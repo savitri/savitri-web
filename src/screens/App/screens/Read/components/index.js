@@ -46,10 +46,10 @@ export default class Read extends Component {
         scrollToAnchor();
     }
 
-    componentWillUnmount() {
+    // componentWillUnmount() {
 
-        this.props.reset();
-    }
+    //     // this.props.reset();
+    // }
 
     handleToggleSectionBreaks(event, value) {
 

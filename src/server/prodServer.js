@@ -26,8 +26,6 @@ server.connection({
     port: 8080
 });
 
-console.log(process.env);
-
 
 // const reducer = Redux.combineReducers({ counter: counterReducer, app: appReducer, read: readReducer });
 // const store = Redux.createStore(reducer);

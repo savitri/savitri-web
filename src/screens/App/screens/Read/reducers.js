@@ -28,6 +28,7 @@ export const readData = (state = {}, action) => {
         case SET_READ_DATA:
             return getNewState(state, { section: action.data });
         case GET_READ_DATA:
+            return state;
         case RESET:
             return {};
         default:

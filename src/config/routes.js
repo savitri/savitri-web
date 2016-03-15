@@ -44,7 +44,6 @@ const routes = [
             {
                 path: '/read',
                 onEnter: (_, replaceState) => {
-                    console.log(_);
                     replaceState(null, '/read/1/1/1');
                 }
             },

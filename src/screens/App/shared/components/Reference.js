@@ -6,7 +6,7 @@ import React from 'react';
 import { Link } from 'react-router';
 
 
-import { getCompareSentenceUrl } from '../../../../config/endpoints';
+import { getCompareSentenceUrl, getReadUrl } from '../../../../config/endpoints';
 
 const styles = {
     self: {
@@ -47,6 +47,8 @@ export default class Reference extends React.Component {
 
     getReferenceMenu(contextShown) {
 
+        const refId = this.props.refId ? this.props.refId : this.props.refIds;
+
         return (
             <IconMenu
                 iconButtonElement={ <IconButton><MoreVertIcon /></IconButton> }
@@ -54,11 +56,11 @@ export default class Reference extends React.Component {
                 menuStyle={ styles.menuStyle }
                 >
                 <MenuItem innerDivStyle={ styles.menuStyle } primaryText="Copy link" onTouchTap={ this.handleCopy } data-clipboard-text={ this.props.refText } />
-                <MenuItem
+                { refId ? <MenuItem
                     primaryText="Compare"
-                    containerElement={ <Link to={ getCompareSentenceUrl(this.props.refId) } /> }
+                    containerElement={ <Link to={ getCompareSentenceUrl(this.props.refId ? this.props.refId : this.props.refIds) } /> }
                     innerDivStyle={ styles.menuStyle }
-                    />
+                    /> : null }
             </IconMenu>
         );
     }
@@ -75,10 +77,23 @@ export default class Reference extends React.Component {
 
     render() {
 
-        const { contextShown, sectionId, sentenceId } = this.props;
+        const { contextShown, sectionId, sentenceId, meta } = this.props;
 
         const refText = '||' + sectionId + '.' + sentenceId + '||';
-        const refUrl = window.location.origin + window.location.pathname + '#' + sentenceId;
+        let refUrl;
+
+        if (meta) {
+            refUrl = window.location.origin + getReadUrl(meta.book, meta.canto, meta.section, meta.ed) + '#' + sentenceId;
+        }
+        else {
+            let baseUrl;
+            if (window.location.hash !== '') {
+                baseUrl = window.location.href.slice(0, window.location.href.indexOf(window.location.hash));
+            } else {
+                baseUrl = window.location.href;
+            }
+            refUrl = baseUrl + '#' + sentenceId;
+        }
 
         return (
             <div className='col-xs-2' style={ styles.self }>
